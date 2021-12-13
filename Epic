@@ -21,18 +21,18 @@ library.theme = {
     tabstextcolor = Color3.fromRGB(230, 230, 230),
     bordercolor = Color3.fromRGB(60, 60, 60),
     accentcolor = Color3.fromRGB(106, 13, 173),
-    accentcolor2 = Color3.fromRGB(177, 156, 217),
+    accentcolor2 = Color3.fromRGB(106, 13, 173),
     outlinecolor = Color3.fromRGB(106, 13, 173),
-    outlinecolor2 = Color3.fromRGB(177, 156, 217),
+    outlinecolor2 = Color3.fromRGB(106, 13, 173),
     sectorcolor = Color3.fromRGB(30, 30, 30),
     toptextcolor = Color3.fromRGB(255, 255, 255),
     topheight = 48,
     topcolor = Color3.fromRGB(30, 30, 30),
     topcolor2 = Color3.fromRGB(30, 30, 30), -- Color3.fromRGB(12, 12, 12),
     buttoncolor = Color3.fromRGB(106, 13, 173),
-    buttoncolor2 = Color3.fromRGB(177, 156, 217),
+    buttoncolor2 = Color3.fromRGB(106, 13, 173),
     itemscolor = Color3.fromRGB(106, 13, 173),
-    itemscolor2 = Color3.fromRGB(177, 156, 217)
+    itemscolor2 = Color3.fromRGB(106, 13, 173)
 }
 
 
