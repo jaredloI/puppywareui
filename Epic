@@ -21,18 +21,18 @@ library.theme = {
     tabstextcolor = Color3.fromRGB(230, 230, 230),
     bordercolor = Color3.fromRGB(60, 60, 60),
     accentcolor = Color3.fromRGB(106, 13, 173),
-    accentcolor2 = Color3.fromRGB(106, 13, 173),
-    outlinecolor = Color3.fromRGB(106, 13, 173),
-    outlinecolor2 = Color3.fromRGB(106, 13, 173),
+    accentcolor2 = Color3.fromRGB(177, 156, 217),
+    outlinecolor = Color3.fromRGB(60, 60, 60),
+    outlinecolor2 = Color3.fromRGB(0, 0, 0),
     sectorcolor = Color3.fromRGB(30, 30, 30),
     toptextcolor = Color3.fromRGB(255, 255, 255),
     topheight = 48,
     topcolor = Color3.fromRGB(30, 30, 30),
     topcolor2 = Color3.fromRGB(30, 30, 30), -- Color3.fromRGB(12, 12, 12),
-    buttoncolor = Color3.fromRGB(106, 13, 173),
-    buttoncolor2 = Color3.fromRGB(106, 13, 173),
-    itemscolor = Color3.fromRGB(106, 13, 173),
-    itemscolor2 = Color3.fromRGB(106, 13, 173)
+    buttoncolor = Color3.fromRGB(49, 49, 49),
+    buttoncolor2 = Color3.fromRGB(39, 39, 39),
+    itemscolor = Color3.fromRGB(170, 170, 170),
+    itemscolor2 = Color3.fromRGB(200, 200, 200)
 }
 
 
@@ -52,7 +52,7 @@ function library:CreateWatermark(name)
         getgenv().watermark:Remove()
     end
     getgenv().watermark = watermark.main
-    
+
     watermark.mainbar = Instance.new("Frame", watermark.main)
     watermark.mainbar.Name = "Main"
     watermark.mainbar.BorderColor3 = Color3.fromRGB(80, 80, 80)
@@ -97,7 +97,7 @@ function library:CreateWatermark(name)
     watermark.label.TextStrokeTransparency = 0.000
     watermark.label.TextXAlignment = Enum.TextXAlignment.Left
     watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
-    
+
     watermark.topbar = Instance.new("Frame", watermark.mainbar)
     watermark.topbar.Name = "TopBar"
     watermark.topbar.ZIndex = 6
@@ -139,7 +139,7 @@ function library:CreateWatermark(name)
 
                 if fps ~= oldfps then
                     watermark.label.Text = " " .. name:gsub("{game}", gamename):gsub("{fps}", fps .. " FPS") .. " "
-        
+
                     watermark.label.Size = UDim2.new(0, watermark.label.TextBounds.X+10, 0, 25)
                     watermark.mainbar.Size = UDim2.new(0, watermark.label.TextBounds.X, 0, 25)
                     watermark.topbar.Size = UDim2.new(0, watermark.label.TextBounds.X, 0, 1)
@@ -159,7 +159,7 @@ function library:CreateWatermark(name)
         tweenservice:Create(watermark.Outline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
         tweenservice:Create(watermark.BlackOutline, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 1, Active = false }):Play()
     end)
-    
+
     watermark.mainbar.MouseLeave:Connect(function()
         tweenservice:Create(watermark.mainbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
         tweenservice:Create(watermark.topbar, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), { BackgroundTransparency = 0, Active = true }):Play()
@@ -203,7 +203,7 @@ function library:CreateWindow(name, size, hidebutton)
             dragging = true
             dragStart = input.Position
             startPos = window.Frame.Position
-            
+
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -415,7 +415,7 @@ function library:CreateWindow(name, size, hidebutton)
             wait(0.2)
             block = false
         end
-    
+
         if #window.Tabs == 0 then
             tab:SelectTab()
         end
@@ -431,7 +431,7 @@ function library:CreateWindow(name, size, hidebutton)
             local sector = { }
             sector.name = name or ""
             sector.side = side or "left"
-            
+
             sector.Main = Instance.new("Frame", sector.side == "left" and tab.Left or tab.Right) 
             sector.Main.Name = sector.name:gsub(" ", "") .. "Sector"
             sector.Main.BorderSizePixel = 0
@@ -563,7 +563,7 @@ function library:CreateWindow(name, size, hidebutton)
                 button.BlackOutline2.BorderSizePixel = 0
                 button.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 button.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 button.Outline = Instance.new("Frame", button.Main)
                 button.Outline.Name = "blackline"
                 button.Outline.ZIndex = 4
@@ -627,13 +627,13 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return label
             end
-            
+
             function sector:AddToggle(text, default, callback)
                 local toggle = { }
                 toggle.text = text or ""
                 toggle.default = default or false
                 toggle.callback = callback or function(value) end
-                
+
                 toggle.value = toggle.default
 
                 toggle.Main = Instance.new("TextButton", sector.Items)
@@ -656,7 +656,7 @@ function library:CreateWindow(name, size, hidebutton)
                 toggle.BlackOutline2.BorderSizePixel = 0
                 toggle.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 toggle.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 toggle.Outline = Instance.new("Frame", toggle.Main)
                 toggle.Outline.Name = "blackline"
                 toggle.Outline.ZIndex = 4
@@ -672,7 +672,7 @@ function library:CreateWindow(name, size, hidebutton)
                 toggle.BlackOutline.BorderSizePixel = 0
                 toggle.BlackOutline.BackgroundColor3 = window.theme.outlinecolor2
                 toggle.BlackOutline.Position = UDim2.fromOffset(-1, -1)
-                
+
                 toggle.Gradient = Instance.new("UIGradient", toggle.Main)
                 toggle.Gradient.Rotation = (22.5 * 13)
                 toggle.Gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0.00, Color3.fromRGB(30, 30, 30)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(45, 45, 45)) })
@@ -809,7 +809,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.BlackOutline2.BorderSizePixel = 0
                     colorpicker.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                     colorpicker.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                    
+
                     colorpicker.Outline = Instance.new("Frame", colorpicker.Main)
                     colorpicker.Outline.Name = "blackline"
                     colorpicker.Outline.ZIndex = 4
@@ -817,7 +817,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.Outline.BorderSizePixel = 0
                     colorpicker.Outline.BackgroundColor3 = window.theme.outlinecolor
                     colorpicker.Outline.Position = UDim2.fromOffset(-2, -2)
-    
+
                     colorpicker.BlackOutline = Instance.new("Frame", colorpicker.Main)
                     colorpicker.BlackOutline.Name = "blackline"
                     colorpicker.BlackOutline.ZIndex = 4
@@ -855,7 +855,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.BlackOutline3.BorderSizePixel = 0
                     colorpicker.BlackOutline3.BackgroundColor3 = window.theme.outlinecolor2
                     colorpicker.BlackOutline3.Position = UDim2.fromOffset(-3, -3)
-                    
+
                     colorpicker.Outline2 = Instance.new("Frame", colorpicker.MainPicker)
                     colorpicker.Outline2.Name = "blackline"
                     colorpicker.Outline2.ZIndex = 98
@@ -863,7 +863,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.Outline2.BorderSizePixel = 0
                     colorpicker.Outline2.BackgroundColor3 = window.theme.outlinecolor
                     colorpicker.Outline2.Position = UDim2.fromOffset(-2, -2)
-    
+
                     colorpicker.BlackOutline3 = Instance.new("Frame", colorpicker.MainPicker)
                     colorpicker.BlackOutline3.Name = "blackline"
                     colorpicker.BlackOutline3.ZIndex = 98
@@ -896,7 +896,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.selector.BackgroundColor3 = Color3.fromRGB(255,255,255)
                     colorpicker.selector.BorderColor3 = window.theme.outlinecolor2
                     colorpicker.selector.Text = ""
-        
+
                     colorpicker.gradient = Instance.new("UIGradient", colorpicker.selector)
                     colorpicker.gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.new(1,0,0)), ColorSequenceKeypoint.new(0.25,Color3.new(1,0,1)), ColorSequenceKeypoint.new(0.5,Color3.new(0,1,1)), ColorSequenceKeypoint.new(0.75,Color3.new(1,1,0)), ColorSequenceKeypoint.new(1,Color3.new(1,0,0))})
 
@@ -944,7 +944,7 @@ function library:CreateWindow(name, size, hidebutton)
                             colorpicker:RefreshSelector()
                         end
                     end)
-    
+
                     colorpicker.selector.InputEnded:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
                             dragging_selector = false
@@ -958,14 +958,14 @@ function library:CreateWindow(name, size, hidebutton)
                             colorpicker:RefreshHue()
                         end
                     end)
-    
+
                     colorpicker.hue.InputEnded:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
                             dragging_hue = false
                             colorpicker:RefreshHue()
                         end
                     end)
-    
+
                     uis.InputChanged:Connect(function(input)
                         if dragging_selector and input.UserInputType == Enum.UserInputType.MouseMovement then
                             colorpicker:RefreshSelector()
@@ -1025,7 +1025,7 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return toggle
             end
-            
+
             function sector:AddTextbox(text, default, callback)
                 local textbox = { }
                 textbox.text = text or ""
@@ -1071,7 +1071,7 @@ function library:CreateWindow(name, size, hidebutton)
                     return textbox.value
                 end
 
-                
+
 
                 textbox.Main.FocusLost:Connect(function()
                     textbox:Set(textbox.Main.Text)
@@ -1084,7 +1084,7 @@ function library:CreateWindow(name, size, hidebutton)
                 textbox.BlackOutline2.BorderSizePixel = 0
                 textbox.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 textbox.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 textbox.Outline = Instance.new("Frame", textbox.Main)
                 textbox.Outline.Name = "blackline"
                 textbox.Outline.ZIndex = 4
@@ -1111,7 +1111,7 @@ function library:CreateWindow(name, size, hidebutton)
                 sector:FixSize()
                 return textbox
             end
-            
+
             function sector:AddSlider(text, min, default, max, decimals, callback)
                 local slider = { }
                 slider.text = text or ""
@@ -1174,7 +1174,7 @@ function library:CreateWindow(name, size, hidebutton)
                 slider.BlackOutline2.BorderSizePixel = 0
                 slider.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 slider.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 slider.Outline = Instance.new("Frame", slider.Main)
                 slider.Outline.Name = "blackline"
                 slider.Outline.ZIndex = 4
@@ -1320,7 +1320,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.BlackOutline2.BorderSizePixel = 0
                 colorpicker.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 colorpicker.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 colorpicker.Outline = Instance.new("Frame", colorpicker.Main)
                 colorpicker.Outline.Name = "blackline"
                 colorpicker.Outline.ZIndex = 4
@@ -1366,7 +1366,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.BlackOutline3.BorderSizePixel = 0
                 colorpicker.BlackOutline3.BackgroundColor3 = window.theme.outlinecolor2
                 colorpicker.BlackOutline3.Position = UDim2.fromOffset(-3, -3)
-                
+
                 colorpicker.Outline2 = Instance.new("Frame", colorpicker.MainPicker)
                 colorpicker.Outline2.Name = "blackline"
                 colorpicker.Outline2.ZIndex = 98
@@ -1407,7 +1407,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.selector.BackgroundColor3 = Color3.fromRGB(255,255,255)
                 colorpicker.selector.BorderColor3 = window.theme.outlinecolor2
                 colorpicker.selector.Text = ""
-    
+
                 colorpicker.gradient = Instance.new("UIGradient", colorpicker.selector)
                 colorpicker.gradient.Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.new(1,0,0)), ColorSequenceKeypoint.new(0.25,Color3.new(1,0,1)), ColorSequenceKeypoint.new(0.5,Color3.new(0,1,1)), ColorSequenceKeypoint.new(0.75,Color3.new(1,1,0)), ColorSequenceKeypoint.new(1,Color3.new(1,0,0))})
 
@@ -1556,7 +1556,7 @@ function library:CreateWindow(name, size, hidebutton)
                     local size = textservice:GetTextSize(keybind.Bind.Text, keybind.Bind.TextSize, keybind.Bind.Font, Vector2.new(2000, 2000))
                     keybind.Bind.Size = UDim2.fromOffset(size.X, size.Y)
                     keybind.Bind.Position = UDim2.fromOffset(sector.Main.Size.X.Offset - 10 - keybind.Bind.AbsoluteSize.X, 0)
-                    
+
                     pcall(keybind.newkeycallback, value)
                 end
                 keybind:Set(keybind.default and keybind.default or "None")
@@ -1665,7 +1665,7 @@ function library:CreateWindow(name, size, hidebutton)
                 dropdown.BlackOutline2.BorderSizePixel = 0
                 dropdown.BlackOutline2.BackgroundColor3 = window.theme.outlinecolor2
                 dropdown.BlackOutline2.Position = UDim2.fromOffset(-3, -3)
-                
+
                 dropdown.Outline = Instance.new("Frame", dropdown.Main)
                 dropdown.Outline.Name = "blackline"
                 dropdown.Outline.ZIndex = 4
@@ -1711,7 +1711,7 @@ function library:CreateWindow(name, size, hidebutton)
                 dropdown.BlackOutline2Items.BackgroundColor3 = window.theme.outlinecolor2
                 dropdown.BlackOutline2Items.Position = dropdown.ItemsFrame.Position + UDim2.fromOffset(-3, -3)
                 dropdown.BlackOutline2Items.Visible = false
-                
+
                 dropdown.OutlineItems = Instance.new("Frame", dropdown.Main)
                 dropdown.OutlineItems.Name = "blackline"
                 dropdown.OutlineItems.ZIndex = 7
@@ -1807,7 +1807,7 @@ function library:CreateWindow(name, size, hidebutton)
 
                         dropdown.ItemsFrame.Size = UDim2.fromOffset(dropdown.Main.Size.X.Offset, math.clamp(#dropdown.items * item.AbsoluteSize.Y, 20, 156) + 4)
                         dropdown.ItemsFrame.CanvasSize = UDim2.fromOffset(dropdown.ItemsFrame.AbsoluteSize.X, (#dropdown.items * item.AbsoluteSize.Y) + 4)
-    
+
                         dropdown.OutlineItems.Size = dropdown.ItemsFrame.Size + UDim2.fromOffset(2, 2)
                         dropdown.BlackOutlineItems.Size = dropdown.ItemsFrame.Size + UDim2.fromOffset(4, 4)
                         dropdown.BlackOutline2Items.Size = dropdown.ItemsFrame.Size + UDim2.fromOffset(6, 6)
@@ -1987,11 +1987,11 @@ function library:CreateWindow(name, size, hidebutton)
             for i,v in pairs(game:GetService("Players"):GetPlayers()) do
                 list:AddPlayer(v)
             end
-            
+
             game:GetService("Players").PlayerAdded:Connect(function(v)
                 list:AddPlayer(v)
             end)
-            
+
             return list
         end
         ]]--
